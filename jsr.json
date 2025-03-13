@@ -1,0 +1,12 @@
+{
+  "name": "@lucafornerone/network-default-gateway",
+  "exports": "./index.ts",
+  "license": "MIT",
+  "version": "1.0.0",
+  "publish": {
+    "include": ["LICENSE", "README.md", "index.ts", "src/**/*.ts"]
+  },
+  "compilerOptions": {
+    "types": ["npm:@types/bun"]
+  }
+}

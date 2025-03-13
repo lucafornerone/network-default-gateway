@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "types": ["npm:@types/bun"]
+  },
+  "nodeModulesDir": "none"
+}

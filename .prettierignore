@@ -1,0 +1,8 @@
+dist/
+node_modules/
+README.md
+CHANGELOG.md
+*.sh
+.gitignore
+.prettierignore
+.husky
