@@ -2,7 +2,6 @@ import { platformFromRuntimeOs } from '../common.ts';
 import { IRuntime, Platform, Runtime } from '../types.ts';
 import { platform } from 'node:os';
 import { Buffer } from 'node:buffer';
-import * as Bun from 'bun';
 
 export class BunRuntime implements IRuntime {
   /**
