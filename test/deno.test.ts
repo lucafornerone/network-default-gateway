@@ -26,24 +26,18 @@ if (v4Available) {
     assertExists(v4.prefixLength);
   });
 
-  Deno.test(
-    '_v4DefaultGateway: should return an object with properties of the correct types',
-    () => {
-      assertEquals(typeof v4.gateway, 'string');
-      assertEquals(typeof v4.interface, 'string');
-      assertEquals(typeof v4.ip, 'string');
-      assertEquals(typeof v4.prefixLength, 'number');
-      assertEquals(IPv4_REGEX.test(v4.gateway), true);
-      assertEquals(IPv4_REGEX.test(v4.ip), true);
-    }
-  );
+  Deno.test('_v4DefaultGateway: should return an object with properties of the correct types', () => {
+    assertEquals(typeof v4.gateway, 'string');
+    assertEquals(typeof v4.interface, 'string');
+    assertEquals(typeof v4.ip, 'string');
+    assertEquals(typeof v4.prefixLength, 'number');
+    assertEquals(IPv4_REGEX.test(v4.gateway), true);
+    assertEquals(IPv4_REGEX.test(v4.ip), true);
+  });
 } else {
-  Deno.test(
-    '_v4DefaultGateway: should throw DefaultGatewayNotAvailableError if v4 gateway is not available',
-    () => {
-      assertInstanceOf(v4Error, DefaultGatewayNotAvailableError);
-    }
-  );
+  Deno.test('_v4DefaultGateway: should throw DefaultGatewayNotAvailableError if v4 gateway is not available', () => {
+    assertInstanceOf(v4Error, DefaultGatewayNotAvailableError);
+  });
 }
 
 let v6: NetworkDefaultGateway;
@@ -69,22 +63,16 @@ if (v6Available) {
     assertExists(v6.prefixLength);
   });
 
-  Deno.test(
-    '_v6DefaultGateway: should return an object with properties of the correct types',
-    () => {
-      assertEquals(typeof v6.gateway, 'string');
-      assertEquals(typeof v6.interface, 'string');
-      assertEquals(typeof v6.ip, 'string');
-      assertEquals(typeof v6.prefixLength, 'number');
-      assertEquals(IPv6_REGEX.test(v6.gateway), true);
-      assertEquals(IPv6_REGEX.test(v6.ip), true);
-    }
-  );
+  Deno.test('_v6DefaultGateway: should return an object with properties of the correct types', () => {
+    assertEquals(typeof v6.gateway, 'string');
+    assertEquals(typeof v6.interface, 'string');
+    assertEquals(typeof v6.ip, 'string');
+    assertEquals(typeof v6.prefixLength, 'number');
+    assertEquals(IPv6_REGEX.test(v6.gateway), true);
+    assertEquals(IPv6_REGEX.test(v6.ip), true);
+  });
 } else {
-  Deno.test(
-    '_v6DefaultGateway: should throw DefaultGatewayNotAvailableError if v6 gateway is not available',
-    () => {
-      assertInstanceOf(v6Error, DefaultGatewayNotAvailableError);
-    }
-  );
+  Deno.test('_v6DefaultGateway: should throw DefaultGatewayNotAvailableError if v6 gateway is not available', () => {
+    assertInstanceOf(v6Error, DefaultGatewayNotAvailableError);
+  });
 }
