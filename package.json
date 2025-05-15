@@ -29,15 +29,15 @@
   "files": ["dist"],
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@commitlint/cli": "^19.8.0",
-    "@commitlint/config-conventional": "^19.8.0",
-    "@types/bun": "^1.2.10",
-    "@types/node": "^22.14.1",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@types/bun": "^1.2.13",
+    "@types/node": "^22.15.18",
     "chai": "^5.2.0",
     "default-gateway": "^7.2.2",
     "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "mocha": "^11.1.0",
-    "typescript": "^5.8.2"
+    "lint-staged": "^16.0.0",
+    "mocha": "^11.2.2",
+    "typescript": "^5.8.3"
   }
 }
