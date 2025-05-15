@@ -63,7 +63,7 @@ export async function spawnCommandAndParse<T>(spawner: Spawner, cmds: string[]):
   try {
     const output: T | T[] = JSON.parse(rawOutput);
     return Array.isArray(output) ? output : [output];
-  } catch (error) {
+  } catch (_error) {
     throw new JSONParsingSpawnerOutputError();
   }
 }

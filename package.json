@@ -16,7 +16,7 @@
     "pretest": "npm run build"
   },
   "lint-staged": {
-    "**/*": "biome format --write"
+    "**/*": ["biome lint", "biome format --write"]
   },
   "repository": {
     "type": "git",

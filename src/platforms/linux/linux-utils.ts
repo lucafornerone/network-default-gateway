@@ -45,7 +45,7 @@ export async function spawnCommandAndParse<T>(spawner: Spawner, cmds: string[]):
   const rawOutput = await spawner(cmds);
   try {
     return JSON.parse(rawOutput);
-  } catch (error) {
+  } catch (_error) {
     throw new JSONParsingSpawnerOutputError();
   }
 }
