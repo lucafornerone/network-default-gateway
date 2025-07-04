@@ -23,23 +23,23 @@ export class DenoRuntime implements IRuntime {
 
     if (!processInput) {
       // execute command without input
-      const output: Deno.CommandOutput = await command.output();
-      return textDecoder.decode(output.stdout).trim();
+      const { stdout } = await command.output();
+      return textDecoder.decode(stdout).trim();
     }
 
     // attach process input to current command
     options.stdin = 'piped';
     options.stdout = 'piped';
-    const process = command.spawn();
-    const inputBytes = new TextEncoder().encode(processInput);
+    const process: Deno.ChildProcess = command.spawn();
+    const inputBytes: Uint8Array = new TextEncoder().encode(processInput);
     const writer = process.stdin.getWriter();
     await writer.write(inputBytes);
     // release and close input
     writer.releaseLock();
     process.stdin.close();
 
-    const output: Deno.CommandOutput = await process.output();
-    return textDecoder.decode(output.stdout).trim();
+    const { stdout } = await process.output();
+    return textDecoder.decode(stdout).trim();
   }
 
   /**
