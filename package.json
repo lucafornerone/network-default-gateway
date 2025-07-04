@@ -18,6 +18,9 @@
   "lint-staged": {
     "**/*": ["biome lint", "biome format --write"]
   },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lucafornerone/network-default-gateway"
