@@ -14,10 +14,10 @@ export class BunRuntime implements IRuntime {
    */
   async spawnCommand(cmds: string[], processInput?: string): Promise<string> {
     // spawn command with input if exists
-    const process = Bun.spawn(cmds, {
+    const { stdout } = Bun.spawn(cmds, {
       stdin: processInput ? Buffer.from(processInput) : undefined,
     });
-    return (await new Response(process.stdout).text()).trim();
+    return (await stdout.text()).trim();
   }
 
   /**
