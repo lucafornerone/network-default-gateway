@@ -68,15 +68,15 @@ export function mergeRoutesWithAddresseses(
   return ipRoutes.flatMap((ipRoute) =>
     ipAddrs
       .filter((ipAddr) => ipAddr.ifname === ipRoute.dev)
-      .flatMap((ipAddrComplete) => {
+      .flatMap((ipAddr) => {
         // addr_info contains IPv4 and IPv6 details for each interface
-        return ipAddrComplete.addr_info.map((ipAddrInfo) => {
-          const { addr_info, ...ipAddr } = ipAddrComplete;
+        return ipAddr.addr_info.map((ipAddrInfo) => {
           // unify ip route, ip addr and ip addr info (IPv4 or IPv6 detail)
           return {
             ...ipRoute,
-            ...ipAddr,
             ...ipAddrInfo,
+            operstate: ipAddr.operstate,
+            ifname: ipAddr.ifname,
           };
         });
       })

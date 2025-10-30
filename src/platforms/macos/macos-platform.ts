@@ -1,14 +1,14 @@
 import {
   AddressFamily,
-  Spawner,
-  NetworkDefaultGateway,
-  IPlatform,
   DefaultGatewayNotAvailableError,
+  IPlatform,
+  NetworkDefaultGateway,
+  Spawner,
 } from '../../types.ts';
 import {
   defaultRouteCommand,
-  prefixLengthAndIpByAddressFamily,
   interfaceDetailsCommand,
+  prefixLengthAndIpByAddressFamily,
   valueFromRowKey,
 } from './macos-utils.ts';
 

@@ -1,7 +1,7 @@
+import { spawn, spawnSync } from 'node:child_process';
+import { platform } from 'node:os';
 import { platformFromRuntimeOs } from '../common.ts';
 import { IRuntime, Platform, Runtime } from '../types.ts';
-import { platform } from 'node:os';
-import { spawn, spawnSync } from 'node:child_process';
 
 export class NodeRuntime implements IRuntime {
   /**

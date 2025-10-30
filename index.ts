@@ -1,4 +1,4 @@
-import { currentRuntime, currentPlatform } from './src/common.ts';
+import { currentPlatform, currentRuntime } from './src/common.ts';
 import { AddressFamily, NetworkDefaultGateway } from './src/types.ts';
 
 /**

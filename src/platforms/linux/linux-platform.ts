@@ -1,16 +1,16 @@
 import {
-  DefaultGatewayNotAvailableError,
-  Spawner,
   AddressFamily,
-  NetworkDefaultGateway,
+  DefaultGatewayNotAvailableError,
   IPlatform,
+  NetworkDefaultGateway,
+  Spawner,
 } from '../../types.ts';
 import {
-  ipDefaultRouteCommand,
   defaultInterfaceByAddressFamily,
   IpAddr,
-  ipInterfaceDetailsCommand,
   IpRoute,
+  ipDefaultRouteCommand,
+  ipInterfaceDetailsCommand,
   LinuxInterface,
   mergeRoutesWithAddresseses,
   spawnCommandAndParse,

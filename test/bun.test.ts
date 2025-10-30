@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'bun:test';
+import { describe, expect, it } from 'bun:test';
 import { v4DefaultGateway, v6DefaultGateway } from '../index.ts';
 import { DefaultGatewayNotAvailableError, NetworkDefaultGateway } from '../src/types.ts';
 import { IPv4_REGEX, IPv6_REGEX } from './regexs.mjs';

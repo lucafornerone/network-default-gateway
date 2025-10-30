@@ -1,11 +1,11 @@
-import { Spawner, AddressFamily, NetworkDefaultGateway, IPlatform } from '../../types.ts';
+import { AddressFamily, IPlatform, NetworkDefaultGateway, Spawner } from '../../types.ts';
 import {
-  spawnCommandAndParse,
-  netRouteCommand,
-  netIpAddressCommand,
-  NetRoute,
-  NetIpAddress,
   defaultInterfaceByAddressFamily,
+  NetIpAddress,
+  NetRoute,
+  netIpAddressCommand,
+  netRouteCommand,
+  spawnCommandAndParse,
   WindowsInterface,
 } from './windows-utils.ts';
 
