@@ -1,10 +1,10 @@
 import {
   AddressFamily,
+  DefaultGatewayNotAvailableError,
   DefaultInterfaceNotFoundError,
   JSONParsingSpawnerOutputError,
-  DefaultGatewayNotAvailableError,
-  Spawner,
   NoAvailableNetworkError,
+  Spawner,
 } from '../../types.ts';
 
 /**

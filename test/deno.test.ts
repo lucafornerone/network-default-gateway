@@ -1,4 +1,4 @@
-import { assertExists, assertEquals, assertInstanceOf } from 'jsr:@std/assert';
+import { assertEquals, assertExists, assertInstanceOf } from 'jsr:@std/assert';
 import { v4DefaultGateway, v6DefaultGateway } from '../index.ts';
 import { DefaultGatewayNotAvailableError, NetworkDefaultGateway } from '../src/types.ts';
 import { IPv4_REGEX, IPv6_REGEX } from './regexs.mjs';
