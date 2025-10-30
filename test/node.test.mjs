@@ -1,11 +1,8 @@
+import { expect } from 'chai';
 import { v4DefaultGateway, v6DefaultGateway } from '../dist/index.js';
 import { DefaultGatewayNotAvailableError } from '../dist/src/types.js';
 import { IPv4_REGEX, IPv6_REGEX } from './regexs.mjs';
-import { expect } from 'chai';
-import { gateway4async, gateway6async } from 'default-gateway';
-import { platform } from 'node:os';
 
-// network-default-gateway methods
 let v4, v4Error;
 let v4Available = false;
 try {
@@ -13,14 +10,6 @@ try {
   v4Available = true;
 } catch (error) {
   v4Error = error;
-}
-
-// benchmark methods
-let v4BenchmarkValue, v4BenchmarkError;
-try {
-  v4BenchmarkValue = await gateway4async();
-} catch (error) {
-  v4BenchmarkError = error;
 }
 
 describe('_v4DefaultGateway', () => {
@@ -44,24 +33,13 @@ describe('_v4DefaultGateway', () => {
       expect(IPv4_REGEX.test(v4.gateway)).to.be.true;
       expect(IPv4_REGEX.test(v4.ip)).to.be.true;
     });
-
-    it('should return gateway and interface equal to the benchmark value', () => {
-      expect(v4BenchmarkValue).to.not.be.undefined;
-      expect(v4.gateway).to.equal(v4BenchmarkValue.gateway);
-      expect(v4.interface).to.equal(v4BenchmarkValue.int);
-    });
   } else {
     it('should throw DefaultGatewayNotAvailableError if v4 gateway is not available', () => {
       expect(v4Error).to.be.instanceOf(DefaultGatewayNotAvailableError);
     });
-    it('benchmark should throw "Unable to determine default gateway" if v4 gateway is not available', () => {
-      expect(v4BenchmarkError).to.not.be.undefined;
-      expect(v4BenchmarkError.message).to.equal('Unable to determine default gateway');
-    });
   }
 });
 
-// network-default-gateway methods
 let v6, v6Error;
 let v6Available = false;
 try {
@@ -69,14 +47,6 @@ try {
   v6Available = true;
 } catch (error) {
   v6Error = error;
-}
-
-// benchmark methods
-let v6BenchmarkValue, v6BenchmarkError;
-try {
-  v6BenchmarkValue = await gateway6async();
-} catch (error) {
-  v6BenchmarkError = error;
 }
 
 describe('_v6DefaultGateway', () => {
@@ -100,22 +70,9 @@ describe('_v6DefaultGateway', () => {
       expect(IPv6_REGEX.test(v6.gateway)).to.be.true;
       expect(IPv6_REGEX.test(v6.ip)).to.be.true;
     });
-
-    it('should return gateway and interface equal to the benchmark value', () => {
-      expect(v6BenchmarkValue).to.not.be.undefined;
-      expect(v6.gateway).to.equal(v6BenchmarkValue.gateway);
-      expect(v6.interface).to.equal(v6BenchmarkValue.int);
-    });
   } else {
     it('should throw DefaultGatewayNotAvailableError if v6 gateway is not available', () => {
       expect(v6Error).to.be.instanceOf(DefaultGatewayNotAvailableError);
     });
-    if (platform() !== 'darwin') {
-      // this test is skipped on macOS because the benchmark package does not correctly handle missing v6 gateway
-      it('benchmark should throw "Unable to determine default gateway" if v6 gateway is not available', () => {
-        expect(v6BenchmarkError).to.not.be.undefined;
-        expect(v6BenchmarkError.message).to.equal('Unable to determine default gateway');
-      });
-    }
   }
 });

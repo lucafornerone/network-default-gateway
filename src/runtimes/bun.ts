@@ -1,7 +1,7 @@
+import { Buffer } from 'node:buffer';
+import { platform } from 'node:os';
 import { platformFromRuntimeOs } from '../common.ts';
 import { IRuntime, Platform, Runtime } from '../types.ts';
-import { platform } from 'node:os';
-import { Buffer } from 'node:buffer';
 
 export class BunRuntime implements IRuntime {
   /**
@@ -17,7 +17,7 @@ export class BunRuntime implements IRuntime {
     const { stdout } = Bun.spawn(cmds, {
       stdin: processInput ? Buffer.from(processInput) : undefined,
     });
-    return (await stdout.text()).trim();
+    return (await Bun.readableStreamToText(stdout)).trim();
   }
 
   /**
