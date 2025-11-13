@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'bun:test';
+import { isIPv4, isIPv6 } from 'node:net';
 import { v4DefaultGateway, v6DefaultGateway } from '../index.ts';
 import { DefaultGatewayNotAvailableError, NetworkDefaultGateway } from '../src/types.ts';
-import { IPv4_REGEX, IPv6_REGEX } from './regexs.mjs';
 
 let v4: NetworkDefaultGateway;
 let v4Available = false;
@@ -32,8 +32,8 @@ describe('_v4DefaultGateway', () => {
       expect(v4.interface).toBeTypeOf('string');
       expect(v4.ip).toBeTypeOf('string');
       expect(v4.prefixLength).toBeTypeOf('number');
-      expect(IPv4_REGEX.test(v4.gateway)).toBe(true);
-      expect(IPv4_REGEX.test(v4.ip)).toBe(true);
+      expect(isIPv4(v4.gateway)).toBe(true);
+      expect(isIPv4(v4.ip)).toBe(true);
     });
   } else {
     it('should throw DefaultGatewayNotAvailableError if v4 gateway is not available', () => {
@@ -71,8 +71,8 @@ describe('_v6DefaultGateway', () => {
       expect(v6.interface).toBeTypeOf('string');
       expect(v6.ip).toBeTypeOf('string');
       expect(v6.prefixLength).toBeTypeOf('number');
-      expect(IPv6_REGEX.test(v6.gateway)).toBe(true);
-      expect(IPv6_REGEX.test(v6.ip)).toBe(true);
+      expect(isIPv6(v6.gateway)).toBe(true);
+      expect(isIPv6(v6.ip)).toBe(true);
     });
   } else {
     it('should throw DefaultGatewayNotAvailableError if v6 gateway is not available', () => {

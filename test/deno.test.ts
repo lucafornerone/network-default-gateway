@@ -1,7 +1,7 @@
 import { assertEquals, assertExists, assertInstanceOf } from 'jsr:@std/assert';
+import { isIPv4, isIPv6 } from 'node:net';
 import { v4DefaultGateway, v6DefaultGateway } from '../index.ts';
 import { DefaultGatewayNotAvailableError, NetworkDefaultGateway } from '../src/types.ts';
-import { IPv4_REGEX, IPv6_REGEX } from './regexs.mjs';
 
 let v4: NetworkDefaultGateway;
 let v4Available = false;
@@ -31,8 +31,8 @@ if (v4Available) {
     assertEquals(typeof v4.interface, 'string');
     assertEquals(typeof v4.ip, 'string');
     assertEquals(typeof v4.prefixLength, 'number');
-    assertEquals(IPv4_REGEX.test(v4.gateway), true);
-    assertEquals(IPv4_REGEX.test(v4.ip), true);
+    assertEquals(isIPv4(v4.gateway), true);
+    assertEquals(isIPv4(v4.ip), true);
   });
 } else {
   Deno.test('_v4DefaultGateway: should throw DefaultGatewayNotAvailableError if v4 gateway is not available', () => {
@@ -68,8 +68,8 @@ if (v6Available) {
     assertEquals(typeof v6.interface, 'string');
     assertEquals(typeof v6.ip, 'string');
     assertEquals(typeof v6.prefixLength, 'number');
-    assertEquals(IPv6_REGEX.test(v6.gateway), true);
-    assertEquals(IPv6_REGEX.test(v6.ip), true);
+    assertEquals(isIPv6(v6.gateway), true);
+    assertEquals(isIPv6(v6.ip), true);
   });
 } else {
   Deno.test('_v6DefaultGateway: should throw DefaultGatewayNotAvailableError if v6 gateway is not available', () => {

@@ -1,7 +1,7 @@
+import { isIPv4, isIPv6 } from 'node:net';
 import { expect } from 'chai';
 import { v4DefaultGateway, v6DefaultGateway } from '../dist/index.js';
 import { DefaultGatewayNotAvailableError } from '../dist/src/types.js';
-import { IPv4_REGEX, IPv6_REGEX } from './regexs.mjs';
 
 let v4, v4Error;
 let v4Available = false;
@@ -30,8 +30,8 @@ describe('_v4DefaultGateway', () => {
       expect(v4.interface).to.be.a('string');
       expect(v4.ip).to.be.a('string');
       expect(v4.prefixLength).to.be.a('number');
-      expect(IPv4_REGEX.test(v4.gateway)).to.be.true;
-      expect(IPv4_REGEX.test(v4.ip)).to.be.true;
+      expect(isIPv4(v4.gateway)).to.be.true;
+      expect(isIPv4(v4.ip)).to.be.true;
     });
   } else {
     it('should throw DefaultGatewayNotAvailableError if v4 gateway is not available', () => {
@@ -67,8 +67,8 @@ describe('_v6DefaultGateway', () => {
       expect(v6.interface).to.be.a('string');
       expect(v6.ip).to.be.a('string');
       expect(v6.prefixLength).to.be.a('number');
-      expect(IPv6_REGEX.test(v6.gateway)).to.be.true;
-      expect(IPv6_REGEX.test(v6.ip)).to.be.true;
+      expect(isIPv6(v6.gateway)).to.be.true;
+      expect(isIPv6(v6.ip)).to.be.true;
     });
   } else {
     it('should throw DefaultGatewayNotAvailableError if v6 gateway is not available', () => {
