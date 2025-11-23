@@ -7,6 +7,22 @@ Effortlessly discover machine's default gateway with zero external dependency. T
 
 It includes runtime-specific code for Bun, Deno, and Node, along with OS-specific code. Both types of code are only loaded when necessary, ensuring minimal impact on performance.
 
+## How it works
+
+This package retrieves the default gateway by spawning OS-level commands, which are available by default on each system and require no additional installation. Specifically:
+
+- Linux: `ip`
+- macOS: `route`  and `ifconfig`
+- Windows: PowerShell’s `Get-NetRoute` and `Get-NetIPAddress`
+
+The commands are spawned through the active runtime. Specifically:
+
+- Bun: `Bun.spawn`
+- Deno: `Deno.Command`
+- Node: `spawn` from `child_process`
+
+The output of these commands is parsed into `JSON` (on Linux and Windows) or processed using `grep` and `awk` (on macOS), ensuring a consistent key–value structure for all retrieved information.
+
 It is ESM-only and fully written in TypeScript. It is available on JSR and npm.
 
 ## Works on
