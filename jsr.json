@@ -5,8 +5,5 @@
   "version": "1.2.1",
   "publish": {
     "include": ["LICENSE", "README.md", "index.ts", "src/**/*.ts"]
-  },
-  "compilerOptions": {
-    "types": ["npm:@types/bun"]
   }
 }
