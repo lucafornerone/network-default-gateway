@@ -1,6 +1,6 @@
 {
   "name": "network-default-gateway",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Effortlessly discover machine's default gateway with zero external dependency",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

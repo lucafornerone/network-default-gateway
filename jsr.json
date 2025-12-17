@@ -2,7 +2,7 @@
   "name": "@lucafornerone/network-default-gateway",
   "exports": "./index.ts",
   "license": "MIT",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "publish": {
     "include": ["LICENSE", "README.md", "index.ts", "src/**/*.ts"]
   }
