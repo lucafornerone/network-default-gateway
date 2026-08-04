@@ -14,6 +14,7 @@ export class DenoRuntime implements IRuntime {
     // command args are cmds strings starting from second position
     const options: Deno.CommandOptions = {
       args: cmds.slice(1),
+      stderr: 'null',
     };
     // command is first cmds string
     const command = new Deno.Command(cmds[0], options);

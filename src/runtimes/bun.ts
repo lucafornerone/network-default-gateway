@@ -16,8 +16,10 @@ export class BunRuntime implements IRuntime {
     // spawn command with input if exists
     const { stdout } = Bun.spawn(cmds, {
       stdin: processInput ? Buffer.from(processInput) : undefined,
+      stderr: 'ignore',
     });
-    return (await Bun.readableStreamToText(stdout)).trim();
+    // @ts-ignore: Bypassing TS compiler error since this code runs exclusively on Bun
+    return (await stdout.text()).trim();
   }
 
   /**
