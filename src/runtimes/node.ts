@@ -1,4 +1,4 @@
-import { spawn, spawnSync } from 'node:child_process';
+import { SpawnOptions, spawn } from 'node:child_process';
 import { platform } from 'node:os';
 import { platformFromRuntimeOs } from '../common.ts';
 import { IRuntime, Platform, Runtime } from '../types.ts';
@@ -13,32 +13,31 @@ export class NodeRuntime implements IRuntime {
    * @throws {Error} If the command execution fails.
    */
   async spawnCommand(cmds: string[], processInput?: string): Promise<string> {
-    if (!processInput) {
-      // execute command without input
-      return spawnSync(cmds[0], cmds.slice(1)).stdout.toString().trim();
-    }
-
-    return await new Promise((resolve) => {
-      const process = spawn(cmds[0], cmds.slice(1));
-      if (processInput) {
+    return new Promise((resolve, reject) => {
+      // ignore stderr
+      const spawnOptions: SpawnOptions = { stdio: ['pipe', 'pipe', 'ignore'] };
+      const process = spawn(cmds[0], cmds.slice(1), spawnOptions);
+      if (processInput && process.stdin) {
         // attach process input to current command
         process.stdin.write(processInput);
         process.stdin.end();
       }
 
       let output = '';
-      process.stdout.on('data', (data) => {
-        // concat output
-        output += data.toString();
-      });
+      if (process.stdout) {
+        process.stdout.on('data', (data) => {
+          // concat output
+          output += data.toString();
+        });
+      }
 
       process.on('error', () => {
-        throw new NodeParsingCommandError();
+        reject(new NodeParsingCommandError());
       });
 
       process.on('close', (code) => {
         if (code !== 0) {
-          throw new NodeParsingCommandError();
+          reject(new NodeParsingCommandError());
         }
         // command correctly executed
         resolve(output.trim());
