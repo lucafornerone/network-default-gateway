@@ -7,7 +7,7 @@ This package is being developed to replace [default-gateway](https://github.com/
 
 Effortlessly discover machine's default gateway with zero external dependency. This package provides the IP address, gateway, interface name, and prefix length, automatically detecting the runtime environment and platform.
 
-It includes runtime-specific code for Bun, Deno, and Node, along with OS-specific code. Both types of code are only loaded when necessary, ensuring minimal impact on performance.
+It includes runtime-specific code for Bun, Deno, and Node, along with OS-specific code. Both types of code are only loaded when necessary, ensuring the best performance.
 
 ## How it works
 
@@ -91,7 +91,7 @@ IPv6:
   console.log(defaultGateway);
   /*
   {
-    ip: 'fe80::1a2b:3c4d:5e6f:7g8h',
+    ip: 'fe80::1a2b:3c4d:5e6f:7a8b',
     gateway: 'fe80::1',
     interface: 'eth1',
     prefixLength: 64
