@@ -16,7 +16,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "mocha test/node.test.mjs --timeout 10_000",
+    "test": "mocha test/node.test.mjs --timeout 10000",
     "prepare": "husky",
     "pretest": "npm run build"
   },

@@ -38,7 +38,7 @@ export async function v4DefaultGateway(): Promise<NetworkDefaultGateway> {
  * @example
  * ```typescript
  * const defaultGateway = await v6DefaultGateway();
- * console.log(defaultGateway); // { ip: 'fe80::1a2b:3c4d:5e6f:7g8h', gateway: 'fe80::1', interface: 'eth1', prefixLength: 64 }
+ * console.log(defaultGateway); // { ip: 'fe80::1a2b:3c4d:5e6f:7a8b', gateway: 'fe80::1', interface: 'eth1', prefixLength: 64 }
  * ```
  *
  * @returns {Promise<NetworkDefaultGateway>} A promise that resolves to an object containing the default IPv6 gateway details:
