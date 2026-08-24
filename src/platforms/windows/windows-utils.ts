@@ -21,6 +21,8 @@ export function netRouteCommand(addressFamily: AddressFamily): string[] {
   const destinationPrefix = addressFamily === AddressFamily.IPv4 ? '0.0.0.0/0' : '::/0';
   return [
     'powershell',
+    '-NoProfile',
+    '-Command',
     `Get-NetRoute | Where-Object { $_.DestinationPrefix -eq "${destinationPrefix}" } | Select-Object -Property ifIndex, NextHop, InterfaceMetric | ConvertTo-Json`,
   ];
 }
@@ -37,6 +39,8 @@ export function netRouteCommand(addressFamily: AddressFamily): string[] {
 export function netIpAddressCommand(ids: number[]): string[] {
   return [
     'powershell',
+    '-NoProfile',
+    '-Command',
     `Get-NetIPAddress | Where-Object { @(${ids.join(',')}) -contains $_.InterfaceIndex } | Select-Object -Property ifIndex, IPAddress, InterfaceAlias, AddressFamily, PrefixLength, AddressState | ConvertTo-Json`,
   ];
 }

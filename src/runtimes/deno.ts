@@ -14,6 +14,7 @@ export class DenoRuntime implements IRuntime {
     // command args are cmds strings starting from second position
     const options: Deno.CommandOptions = {
       args: cmds.slice(1),
+      stdout: 'piped',
       stderr: 'null',
     };
     // command is first cmds string
@@ -30,7 +31,6 @@ export class DenoRuntime implements IRuntime {
 
     // attach process input to current command
     options.stdin = 'piped';
-    options.stdout = 'piped';
     const process: Deno.ChildProcess = command.spawn();
     const inputBytes: Uint8Array = new TextEncoder().encode(processInput);
     const writer = process.stdin.getWriter();
