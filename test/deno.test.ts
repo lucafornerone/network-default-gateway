@@ -1,7 +1,7 @@
 import { assertEquals, assertExists, assertInstanceOf } from 'jsr:@std/assert';
 import { isIPv4, isIPv6 } from 'node:net';
-import { v4DefaultGateway, v6DefaultGateway } from '../index.ts';
-import { DefaultGatewayNotAvailableError, NetworkDefaultGateway } from '../src/types.ts';
+import { NetworkDefaultGateway, v4DefaultGateway, v6DefaultGateway } from '../index.ts';
+import { DefaultGatewayNotAvailableError } from '../src/types.ts';
 
 let v4: NetworkDefaultGateway;
 let v4Available = false;
