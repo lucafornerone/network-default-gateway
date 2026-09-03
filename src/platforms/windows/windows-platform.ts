@@ -1,4 +1,5 @@
-import { AddressFamily, IPlatform, NetworkDefaultGateway, Spawner } from '../../types.ts';
+import { NetworkDefaultGateway } from '../../../index.ts';
+import { AddressFamily, IPlatform, Spawner } from '../../types.ts';
 import {
   defaultInterfaceByAddressFamily,
   NetIpAddress,

@@ -1,5 +1,12 @@
 import { currentPlatform, currentRuntime } from './src/common.ts';
-import { AddressFamily, NetworkDefaultGateway } from './src/types.ts';
+import { AddressFamily } from './src/types.ts';
+
+export interface NetworkDefaultGateway {
+  ip: string;
+  gateway: string;
+  interface: string;
+  prefixLength: number;
+}
 
 /**
  * Retrieves the default IPv4 gateway for the current runtime and platform.

@@ -1,9 +1,4 @@
-export interface NetworkDefaultGateway {
-  ip: string;
-  gateway: string;
-  interface: string;
-  prefixLength: number;
-}
+import { NetworkDefaultGateway } from '../index.ts';
 
 export enum AddressFamily {
   IPv4 = 'IPv4',

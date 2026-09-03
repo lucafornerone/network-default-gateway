@@ -1,10 +1,5 @@
-import {
-  AddressFamily,
-  DefaultGatewayNotAvailableError,
-  IPlatform,
-  NetworkDefaultGateway,
-  Spawner,
-} from '../../types.ts';
+import { NetworkDefaultGateway } from '../../../index.ts';
+import { AddressFamily, DefaultGatewayNotAvailableError, IPlatform, Spawner } from '../../types.ts';
 import {
   defaultRouteCommand,
   interfaceDetailsCommand,
