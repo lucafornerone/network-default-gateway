@@ -70,7 +70,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm run test
+        run: npm run test -- --timeout ${{ vars.TEST_TIMEOUT }}
 
   biome:
     name: Check all files
