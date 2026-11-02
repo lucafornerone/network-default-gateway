@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
 
     steps:
       - name: Checkout code
@@ -33,7 +33,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
 
     steps:
       - name: Checkout code
@@ -53,8 +53,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22, 24, 26]
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [ 22, 24, 26 ]
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
 
     steps:
       - name: Checkout code
