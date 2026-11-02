@@ -1,10 +1,15 @@
 import { currentPlatform, currentRuntime } from './src/common.ts';
 import { AddressFamily } from './src/types.ts';
 
+/** Default network gateway details for a specific address family (IPv4 or IPv6). */
 export interface NetworkDefaultGateway {
+  /** IP address of the current device. */
   ip: string;
+  /** Address of the default gateway. */
   gateway: string;
+  /** Name of the network interface. */
   interface: string;
+  /** Prefix length of the interface's network (e.g. 24 for IPv4, 64 for IPv6). */
   prefixLength: number;
 }
 
