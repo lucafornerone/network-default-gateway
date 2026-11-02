@@ -20,24 +20,14 @@ jobs:
           fetch-depth: 0
 
       - name: Read version from package.json
-        id: read_version
         run: |
-          current_tag=$(jq -r '.version' package.json)
-          echo "current_tag=$current_tag" >> $GITHUB_ENV
+          current_version=$(jq -r '.version' package.json)
+          echo "version=v$current_version" >> $GITHUB_ENV
 
       - name: Get previous tag
-        id: get_previous_tag
         run: |
           previous_tag=$(git log --tags --simplify-by-decoration --pretty="format:%D" | grep -o "tag: [^,]*" | head -n 1 | sed 's/tag: //')
           echo "previous_tag=$previous_tag" >> $GITHUB_ENV
-
-      - name: Create new tag
-        id: create_new_tag
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a ${{ env.current_tag }} -m "Release ${{ env.current_tag }}"
-          git push origin ${{ env.current_tag }}
 
       - name: Generate release notes
         id: generate_release_notes
@@ -48,7 +38,6 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const previousTag = process.env.previous_tag;
-            const currentTag = process.env.current_tag;
 
             let commitList;
             if (previousTag) {
@@ -56,7 +45,7 @@ jobs:
                 owner,
                 repo,
                 base: previousTag,
-                head: currentTag,
+                head: context.sha,
               });
               // order from newest to oldest
               commitList = commits.data.commits.reverse();
@@ -81,8 +70,8 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: ${{ env.current_tag }}
-          name: ${{ env.current_tag }}
+          tag_name: ${{ env.version }}
+          name: ${{ env.version }}
           body: ${{ steps.generate_release_notes.outputs.result }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
