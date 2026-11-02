@@ -1,5 +1,6 @@
 # network-default-gateway
 [![CI](https://github.com/lucafornerone/network-default-gateway/workflows/CI/badge.svg)](https://github.com/lucafornerone/network-default-gateway/actions?query=workflow%3ACI)
+[![Build](https://github.com/lucafornerone/network-default-gateway/workflows/Build/badge.svg)](https://github.com/lucafornerone/network-default-gateway/actions?query=workflow%3ABuild)
 
 ## Purpose
 
